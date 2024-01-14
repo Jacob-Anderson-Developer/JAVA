@@ -1,0 +1,32 @@
+/*
+Jacob Anderson
+9-21-2022
+CIS 280
+
+The purpose of this program is to demonstrate the ability to read a text file using Java.
+
+*/
+
+import java.util.Scanner; 	//Needed for Scanner
+import java.io.*;			//Needed for PrintWriter and IOException
+
+public class ReadMyFile
+{
+	public static void main (String[] args) throws IOException
+	{
+		
+		System.out.print("Welcome to the Jacob Anderson Desert Island List Reader! \n");
+		System.out.print("Here is a list of the items to be brought to the desert island: \n");
+
+		//Open the file
+		File readFile = new File("DesertList.txt");		//Creates an instance of the file class.  Is used to REPRESENT a file.
+		Scanner inputFile = new Scanner(readFile);		//We pass a reference to to the file object (readFile) as an argument to the Scanner class constructor
+		
+		while (inputFile.hasNext())						//While there are more lines to be read
+		{
+			String item = inputFile.nextLine();			//The value of item is changed to the value of the next line.
+			System.out.println(item);					//The system then prints that line
+		}
+		inputFile.close();	
+	}
+}

@@ -1,0 +1,83 @@
+/*
+Jacob Anderson
+CIS 280
+9-28-2022
+
+The purpose of this program is to demonstrate aptitude with enumerated classes.  It will take user input and output what their grade level is.
+
+*/
+
+import java.util.*;	
+import java.lang.*;
+
+public class Classification
+{
+	// Declare the Level enumerated type.
+	enum Level { FRESHMAN, SOPHOMORE, JUNIOR, SENIOR }
+	
+	public static int credits = -1;		//Integer value to represent credits
+	public static String checker;		//String to hold the value of checker flag.
+	
+	public static void main(String[] args)
+   {
+	
+	System.out.println("Welcome to the Jacob Anderson Student Classification Program!\n");
+	
+	//Create Scanner object for keyboard input
+	Scanner keyboard = new Scanner(System.in);
+
+		//Begin loop
+		do
+		{
+			//The try statement allows you to define a block of code to be tested for errors while it is being executed.
+			try 
+			{
+				checker = "off";  //Set checker to "off"
+				System.out.println("How many credits are you taking? ");
+				credits = keyboard.nextInt();
+				keyboard.nextLine();
+			}
+				catch(Exception e)  //The catch statement allows you to define a block of code to be executed, if an error occurs in the try block.
+				{
+					checker = "on";
+					//Consumes the return from the integer input
+					keyboard.nextLine(); //Without this statement the while will continuously ask "How many credits are you taking?"  Consumes the keyboard input to ensure this does not happen.
+				}
+
+					if (credits >= 0 && credits < 31)
+						
+					{
+						Level collegeYear = Level.FRESHMAN;
+						System.out.println("You are a: " + collegeYear);
+					}
+					
+					else if (credits > 30 && credits < 61)
+					{
+						Level collegeYear = Level.SOPHOMORE;
+						System.out.println("You are a: " + collegeYear);
+					}
+					
+					else if (credits > 60 && credits < 91)
+					{
+						Level collegeYear = Level.JUNIOR;
+						System.out.println("You are a: " + collegeYear);
+					}
+					
+					else if (credits >= 91)
+					{
+						Level collegeYear = Level.SENIOR;
+						System.out.println("You are a: " + collegeYear);
+					}
+/* 					else if (credits <= 0)
+					{
+						System.out.println("Please enter a valid number\n");
+						checker = "on";
+					} */
+					else
+					{
+						System.out.println("Please enter a valid number\n");
+					} 
+		}
+		while (checker == "on" ); //Checks for erroneous input while the exception has been caught.
+	}
+}
